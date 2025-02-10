@@ -1,0 +1,10 @@
+[data-state="open"] > svg {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+  }
+
+  [data-state="closed"] > svg {
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+  }
+  
