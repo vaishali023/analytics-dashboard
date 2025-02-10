@@ -12,7 +12,7 @@ export const DailyTransaction: React.FC<DailyTransactionProps> = ({
   activeUsers,
 }) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       <Card
         title="Latest Block Number"
         value={latestBlock !== null ? latestBlock : "Loading..."}
@@ -20,7 +20,7 @@ export const DailyTransaction: React.FC<DailyTransactionProps> = ({
       />
       <Card
         title="Network Latency"
-        value={latency !== null ? `${latency.toFixed(2)} seconds` : "Loading..."}
+        value={latency !== null ? `${latency.toFixed(3)}s` : "Loading..."}
         description="Time between last two blocks"
       />
       <Card

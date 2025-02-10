@@ -4,7 +4,7 @@ import { Dashboard } from './pages/Dashboard'
 function App() {
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-grid-light">
      <Dashboard /> 
   </div>
   )

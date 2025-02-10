@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChainSelector } from "./ChainSelector";
 import { Sun, MoonStar } from "lucide-react";
 
 export const Header: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowDashboard(true);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -11,8 +20,36 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-gray-100 dark:bg-gray-800 dark:text-white shadow-md">
-      <h1 className="text-2xl font-bold">Analytics Dashboard</h1>
+    <header
+      className="flex items-center justify-between px-6 py-4 mb-10
+     bg-white dark:bg-header-dark text-gray-900 dark:text-gray-200 p-4 shadow-[0_4px_15px_rgba(0,0,0,0.1)] dark:shadow-3d-dark border-b  dark:border-darkBorder"
+    >
+      <div
+        className="flex items-baseline space-x-2 cursor-pointer transition-all duration-300 ease-in-out"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <h1
+          className={`text-2xl font-bold ${
+            isHovered ? "text-[#6F41D2]" : "text-gray-900 dark:text-gray-200"
+          } transition-colors duration-300`}
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          Analytics
+        </h1>
+        <h1
+          className={`text-2xl font-bold ${
+            isHovered ? "text-[#6F41D2]" : "text-gray-900 dark:text-gray-200"
+          } transition-all duration-700 ${
+            showDashboard
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-5"
+          }`}
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          Dashboard
+        </h1>
+      </div>
       <div className="flex items-center gap-4">
         <ChainSelector />
         <div
@@ -25,7 +62,7 @@ export const Header: React.FC = () => {
             className={`absolute inset-0 rounded-full transition-all ${
               isDarkMode
                 ? "shadow-[inset_0_0_15px_rgba(255,255,255,0.3)]"
-                : "shadow-[0_0_10px_rgba(0,0,0,0.2)]"
+                : "shadow-[0_0_2px_rgba(0,0,0,0.2)]"
             }`}
           ></div>
           <div

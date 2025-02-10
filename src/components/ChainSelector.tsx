@@ -29,7 +29,7 @@ export const ChainSelector: React.FC = () => {
         setSelectedChain(chains.find((chain) => chain.value === value)!)
       }
     >
-      <SelectTrigger className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all w-[220px]">
+      <SelectTrigger className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-card-dark text-gray-900 dark:text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 dark:hover:bg-[#0B0705] transition-all w-[220px]">
         <Globe className="w-5 h-5 text-gray-600 dark:text-gray-300" />
         <SelectValue placeholder="Select Chain">
           {selectedChain.name}
@@ -37,7 +37,7 @@ export const ChainSelector: React.FC = () => {
       </SelectTrigger>
 
       <SelectContent
-        className="z-50 mt-0 w-[220px] rounded-md border border-gray-300 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800"
+        className="z-50 mt-0 w-[220px] rounded-md border border-gray-300 bg-white shadow-lg dark:border-gray-700 dark:bg-card-dark"
         position="popper"
       >
         {chains.map((chain) => (
@@ -47,7 +47,7 @@ export const ChainSelector: React.FC = () => {
             className={`flex items-center justify-between px-4 py-2 text-sm transition-all rounded-md ${
               chain.disabled
                 ? "cursor-not-allowed text-gray-400"
-                : "hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white"
+                : "hover:bg-gray-100 dark:hover:bg-[#0C0908] text-gray-900 dark:text-white"
             }`}
             disabled={chain.disabled}
           >
@@ -62,7 +62,7 @@ export const ChainSelector: React.FC = () => {
                   Coming Soon
                 </span>
               ) : selectedChain.value === chain.value ? (
-                <Check className="w-4 h-4 text-green-500 ml-10" />
+                <Check className="w-4 h-4 text-green-500 ml-12 flex" />
               ) : null}
             </div>
           </SelectItem>
