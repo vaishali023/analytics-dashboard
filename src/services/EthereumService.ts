@@ -17,7 +17,7 @@ export const fetchLatestBlockNumber = async (): Promise<number> => {
 export const fetchBlockDetails = async (): Promise<{
   latency: number;
   activeUsers: number;
-  timestamp: string; // Add timestamp
+  timestamp: string; 
 }> => {
   try {
     const startTime = performance.now();
